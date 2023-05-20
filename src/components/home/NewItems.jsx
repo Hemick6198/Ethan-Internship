@@ -13,6 +13,7 @@ const API__URL = `https://us-central1-nft-cloud-functions.cloudfunctions.net/new
 const NewItems = () => {
   const [nftInfo, setNftInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  // skeleton loading state array
   const skeletonArray = Array(4).fill(null);
 
   // Loading state and fetching API data with error catcher
@@ -62,7 +63,7 @@ const NewItems = () => {
     });
   };
 
-  // settings for carousel
+  // styling for carousel
   const settings = {
     dots: false,
     nextArrow: <SampleNextArrow />,
@@ -136,6 +137,7 @@ const NewItems = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
+
           {isLoading && (
             <Slider {...settings}>
               {skeletonArray.map((_, index) => (
@@ -167,6 +169,7 @@ const NewItems = () => {
               ))}
             </Slider>
           )}
+          
           {!isLoading && (
             <Slider {...settings}>
               {nftInfo.map((nft) => (
@@ -206,7 +209,6 @@ const NewItems = () => {
                           </div>
                         </div>
                       </div>
-
                       <Link to={`/item-details/${nft.nftId}`}>
                         <img
                           src={nft.nftImage}
