@@ -6,7 +6,7 @@ import Skeleton from "../UI/Skeleton";
 const topSellersAPI = `https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers`;
 
 const TopSellers = () => {
-  const [topSellers, setTopSellers] = useState([]);
+  const [nftInfo, setNftInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   // Skeleton loading state array
   const skeletonArray = Array(12).fill(null);
@@ -15,7 +15,7 @@ const TopSellers = () => {
     // Fetch API data with error and loading state
     try {
       const response = await axios.get(`${topSellersAPI}`);
-      setTopSellers(response.data);
+      setNftInfo(response.data);
       setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -45,8 +45,8 @@ const TopSellers = () => {
                     <li key={index}>
                       <div className="author_list_pp">
                         <div className="lazy pp-author">
-                        <Skeleton width={50} height={50} borderRadius={99} />
-                        <i className="fa fa-check"></i>
+                          <Skeleton width={50} height={50} borderRadius={99} />
+                          <i className="fa fa-check"></i>
                         </div>
                       </div>
                       <div className="author_list_info">
@@ -63,7 +63,7 @@ const TopSellers = () => {
               )}
               {!isLoading && (
                 <>
-                  {topSellers.map((user) => (
+                  {nftInfo.map((user) => (
                     <li key={user.id}>
                       <div className="author_list_pp">
                         <Link to={`/author/${user.authorId}`}>
@@ -76,7 +76,9 @@ const TopSellers = () => {
                         </Link>
                       </div>
                       <div className="author_list_info">
-                        <Link to={`/author/${user.authorId}`}>{user.authorName}</Link>
+                        <Link to={`/author/${user.authorId}`}>
+                          {user.authorName}
+                        </Link>
                         <span>{user.price} ETH</span>
                       </div>
                     </li>

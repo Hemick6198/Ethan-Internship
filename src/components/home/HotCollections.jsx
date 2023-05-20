@@ -7,7 +7,7 @@ import "../../css/styles/style.css";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
 
-const API__URL = `https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections`;
+const HotCollectionsAPI__URL = `https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections`;
 
 const HotCollections = () => {
   const [nftInfo, setNftInfo] = useState([]);
@@ -17,7 +17,7 @@ const HotCollections = () => {
   // Loading state and fetching API data with error catcher
   async function hotCollectionsData() {
     try {
-      const response = await axios.get(`${API__URL}`);
+      const response = await axios.get(`${HotCollectionsAPI__URL}`);
       setNftInfo(response.data);
       setIsLoading(false);
     } catch (error) {

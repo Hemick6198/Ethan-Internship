@@ -7,8 +7,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../css/styles/style.css";
 import Skeleton from "../UI/Skeleton";
+import Countdown from "../UI/Countdown";
+import NftCard from "../UI/NftCard";
 
-const API__URL = `https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems`;
+const NewItemsAPI__URL = `https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems`;
 
 const NewItems = () => {
   const [nftInfo, setNftInfo] = useState([]);
@@ -19,7 +21,7 @@ const NewItems = () => {
   // Loading state and fetching API data with error catcher
   async function newItemsData() {
     try {
-      const response = await axios.get(`${API__URL}`);
+      const response = await axios.get(`${NewItemsAPI__URL}`);
       setNftInfo(response.data);
       setIsLoading(false);
     } catch (error) {
@@ -32,37 +34,27 @@ const NewItems = () => {
     newItemsData();
   }, []);
 
-  // Start the timer when nftInfo data is available
-  useEffect(() => {
-    if (nftInfo.length > 0) {
-      const interval = setInterval(updateTimer, 1000);
-      return () => {
-        clearInterval(interval);
-      };
-    }
-  }, [nftInfo]);
-
-  // Countdown timer for NFT's
-  const updateTimer = () => {
-    setNftInfo((prevNftInfo) => {
-      return prevNftInfo.map((nft) => {
-        const millisLeft = new Date(nft.expiryDate) - Date.now();
-        const secondsLeft = Math.floor(millisLeft / 1000) % 60;
-        const minutesLeft = Math.floor(millisLeft / (1000 * 60)) % 60;
-        const hoursLeft = Math.floor(millisLeft / (1000 * 60 * 60));
-        const displayTimer = millisLeft > 0;
-
-        return {
-          ...nft,
-          secondsLeft,
-          minutesLeft,
-          hoursLeft,
-          displayTimer,
-        };
-      });
-    });
-  };
-
+  // Arrow styling for carousel
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "flex", padding: "0", margin: "0" }}
+        onClick={onClick}
+      />
+    );
+  }
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{ ...style, display: "flex", padding: "0", margin: "0" }}
+        onClick={onClick}
+      />
+    );
+  }
   // styling for carousel
   const settings = {
     dots: false,
@@ -105,27 +97,6 @@ const NewItems = () => {
       },
     ],
   };
-  // Arrow styling for carousel
-  function SamplePrevArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "flex", padding: "0", margin: "0" }}
-        onClick={onClick}
-      />
-    );
-  }
-  function SampleNextArrow(props) {
-    const { className, style, onClick } = props;
-    return (
-      <div
-        className={className}
-        style={{ ...style, display: "flex", padding: "0", margin: "0" }}
-        onClick={onClick}
-      />
-    );
-  }
 
   return (
     <section id="section-items" className="no-bottom">
@@ -169,65 +140,12 @@ const NewItems = () => {
               ))}
             </Slider>
           )}
-          
+
           {!isLoading && (
             <Slider {...settings}>
               {nftInfo.map((nft) => (
                 <div key={nft.id}>
-                  <div className="nft__item">
-                    <div className="author_list_pp">
-                      <Link
-                        to={`/author/${nft.authorId}`}
-                        data-bs-toggle="tooltip"
-                        data-bs-placement="top"
-                        title="Creator: Monica Lucas"
-                      >
-                        <img className="lazy" src={nft.authorImage} alt="" />
-                        <i className="fa fa-check"></i>
-                      </Link>
-                    </div>
-                    {nft.displayTimer && (
-                      <div className="de_countdown">
-                        {`${nft.hoursLeft}h ${nft.minutesLeft}m ${nft.secondsLeft}s`}
-                      </div>
-                    )}
-                    <div className="nft__item_wrap">
-                      <div className="nft__item_extra">
-                        <div className="nft__item_buttons">
-                          <button>Buy Now</button>
-                          <div className="nft__item_share">
-                            <h4>Share</h4>
-                            <a href="" target="_blank" rel="noreferrer">
-                              <i className="fa fa-facebook fa-lg"></i>
-                            </a>
-                            <a href="" target="_blank" rel="noreferrer">
-                              <i className="fa fa-twitter fa-lg"></i>
-                            </a>
-                            <a href="">
-                              <i className="fa fa-envelope fa-lg"></i>
-                            </a>
-                          </div>
-                        </div>
-                      </div>
-                      <Link to={`/item-details/${nft.nftId}`}>
-                        <img
-                          src={nft.nftImage}
-                          className="lazy nft__item_preview"
-                          alt=""
-                        />
-                      </Link>
-                    </div>
-                    <div className="nft__item_info">
-                      <Link to="/item-details">
-                        <h4>{nft.title}</h4>
-                      </Link>
-                      <div className="nft__item_price">{nft.price} ETH</div>
-                      <div className="nft__item_like">
-                        <i className="fa fa-heart"></i>
-                        <span>{nft.likes}</span>
-                      </div>
-                    </div>
-                  </div>
+                  <NftCard nft={nft} />
                 </div>
               ))}
             </Slider>
