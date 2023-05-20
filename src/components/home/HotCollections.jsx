@@ -14,7 +14,7 @@ const HotCollections = () => {
   const [isLoading, setIsLoading] = useState(true);
   const skeletonArray = Array(4).fill(null);
 
-  // Load state and fetching API data with error catcher
+  // Loading state and fetching API data with error catcher
   async function hotCollectionsData() {
     try {
       const response = await axios.get(`${API__URL}`);
