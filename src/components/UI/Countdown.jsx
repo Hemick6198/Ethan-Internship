@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 
 const Countdown = ({ nft }) => {
-  const { hoursLeft, minutesLeft, secondsLeft, displayTimer } = nft;
   const [updatedNft, setUpdatedNft] = useState(nft);
 
   // Countdown timer for NFT's

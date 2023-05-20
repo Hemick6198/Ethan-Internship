@@ -1,8 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
-import Countdown from "../UI/Countdown";
 import Skeleton from "../UI/Skeleton";
 import NftCard from "../UI/NftCard";
 
@@ -10,10 +8,11 @@ const ExploreNFT__API = `https://us-central1-nft-cloud-functions.cloudfunctions.
 
 const ExploreItems = () => {
   const [nftInfo, setNftInfo] = useState([]);
+  const [filter, setFilter] = useState("");
+  // updates the display count and how many to add to screen
   const [displayCount, setDisplayCount] = useState(8);
   const [hasMoreData, setHasMoreData] = useState(true);
   const incrementCount = 4;
-  const [filter, setFilter] = useState("");
   // Skeleton Loading State
   const [isLoading, setIsLoading] = useState(true);
   const skeletonArray = Array(8).fill(null);
@@ -67,6 +66,7 @@ const ExploreItems = () => {
     sortNft();
   }, [filter]);
 
+  // Loads more NFT's
   const LoadMore = () => {
     const newDisplayCount = displayCount + incrementCount;
     setDisplayCount(newDisplayCount);
@@ -143,11 +143,7 @@ const ExploreItems = () => {
       )}
       {hasMoreData && (
         <div className="col-md-12 text-center">
-          <button
-            id="loadmore"
-            className="btn-main lead"
-            onClick={LoadMore}
-          >
+          <button id="loadmore" className="btn-main lead" onClick={LoadMore}>
             Load more
           </button>
         </div>
