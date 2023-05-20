@@ -1,13 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../../css/styles/style.css";
 import Skeleton from "../UI/Skeleton";
-import Countdown from "../UI/Countdown";
 import NftCard from "../UI/NftCard";
 
 const NewItemsAPI__URL = `https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems`;
