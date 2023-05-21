@@ -19,11 +19,10 @@ const HotCollections = () => {
     try {
       const response = await axios.get(`${HotCollectionsAPI__URL}`);
       setNftInfo(response.data);
-      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
-      setIsLoading(false);
     }
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -148,7 +147,7 @@ const HotCollections = () => {
                         </Link>
                       </div>
                       <div className="nft_coll_pp">
-                        <Link to="/author">
+                        <Link to={`/author/${nft.authorId}`}>
                           <img
                             className="lazy pp-coll"
                             src={nft.authorImage}

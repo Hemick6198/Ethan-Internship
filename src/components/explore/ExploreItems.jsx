@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
 import NftCard from "../UI/NftCard";
+import SkeletonCard from "../UI/SkeletonCard";
 
 const ExploreNFT__API = `https://us-central1-nft-cloud-functions.cloudfunctions.net/explore`;
 
@@ -26,11 +27,10 @@ const ExploreItems = () => {
       if (response.data.length < displayCount + incrementCount) {
         setHasMoreData(false);
       }
-      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
-      setIsLoading(false);
     }
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -51,20 +51,19 @@ const ExploreItems = () => {
       }
       const response = await axios.get(apiUrl);
       setNftInfo(response.data);
-      setIsLoading(false);
     } catch (error) {
       console.error("Error sorting data:", error);
-      setIsLoading(false);
     }
+    setIsLoading(false);
   }
-
-  const FilterChange = (event) => {
-    setFilter(event.target.value);
-  };
 
   useEffect(() => {
     sortNft();
   }, [filter]);
+
+  const FilterChange = (event) => {
+    setFilter(event.target.value);
+  };
 
   // Loads more NFT's
   const LoadMore = () => {
@@ -79,12 +78,7 @@ const ExploreItems = () => {
   return (
     <>
       <div>
-        <select
-          id="filter-items"
-          value={filter}
-          defaultValue=""
-          onChange={FilterChange}
-        >
+        <select id="filter-items" value={filter} onChange={FilterChange}>
           <option value="">Default</option>
           <option value="price_low_to_high">Price, Low to High</option>
           <option value="price_high_to_low">Price, High to Low</option>
@@ -98,34 +92,7 @@ const ExploreItems = () => {
             className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
             style={{ display: "block", backgroundSize: "cover" }}
           >
-            <div className="nft__item">
-              <div className="author_list_pp">
-                <Skeleton width={50} height={50} borderRadius={99} />
-                <i className="fa fa-check"></i>
-              </div>
-              <div className="de_countdown_skeleton">
-                <Skeleton width={97} height={30} />
-              </div>
-              <div className="nft__item_wrap">
-                <div className="lazy nft__item_preview">
-                  <Skeleton width={264} height={264} />
-                </div>
-              </div>
-              <div className="nft__item_info">
-                <h4>
-                  <Skeleton width={125} height={18} />
-                </h4>
-                <div className="nft__item_price">
-                  <Skeleton width={75} height={11} />
-                </div>
-                <div className="nft__item_like">
-                  <i className="fa fa-heart"></i>
-                  <span>
-                    <Skeleton width={8} height={8} />
-                  </span>
-                </div>
-              </div>
-            </div>
+            <SkeletonCard />
           </div>
         ))}
       {!isLoading && (
