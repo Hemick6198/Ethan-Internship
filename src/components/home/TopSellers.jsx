@@ -16,11 +16,10 @@ const TopSellers = () => {
     try {
       const response = await axios.get(`${topSellersAPI}`);
       setNftInfo(response.data);
-      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
-      setIsLoading(false);
     }
+    setIsLoading(false);
   }
 
   useEffect(() => {

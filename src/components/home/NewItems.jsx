@@ -7,6 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "../../css/styles/style.css";
 import Skeleton from "../UI/Skeleton";
 import NftCard from "../UI/NftCard";
+import SkeletonCard from "../UI/SkeletonCard";
 
 const NewItemsAPI__URL = `https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems`;
 
@@ -21,11 +22,10 @@ const NewItems = () => {
     try {
       const response = await axios.get(`${NewItemsAPI__URL}`);
       setNftInfo(response.data);
-      setIsLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
-      setIsLoading(false);
     }
+    setIsLoading(false);
   }
 
   useEffect(() => {
@@ -109,6 +109,7 @@ const NewItems = () => {
 
           {isLoading && (
             <Slider {...settings}>
+              {/* cant use SkeletonCard component for this loading state */}
               {skeletonArray.map((_, index) => (
                 <div className="nft__item" key={index}>
                   <div className="author_list_pp">
@@ -119,7 +120,7 @@ const NewItems = () => {
                     <Skeleton width={105} height={30} borderRadius={50} />
                   </div>
                   <div className="nft__item_wrap">
-                    <Skeleton width={282} height={275} />
+                    <Skeleton width={225} height={225} />
                   </div>
                   <div className="nft__item_info">
                     <h4>
