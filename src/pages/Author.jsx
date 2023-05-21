@@ -8,9 +8,11 @@ import Skeleton from "../components/UI/Skeleton";
 const Author__API = `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=`;
 
 const Author = () => {
-  const { authorId } = useParams();
-  const [userInfo, setUserInfo] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [userInfo, setUserInfo] = useState({});
+  // brought over the authorId to get data
+  const { authorId } = useParams();
+  // checking following status for follow button
   const [isFollowing, setIsFollowing] = useState(false);
 
   async function renderUserData() {
@@ -23,6 +25,11 @@ const Author = () => {
     setIsLoading(false);
   }
 
+  useEffect(() => {
+    renderUserData();
+  }, []);
+
+  // Follower button functionality
   function addFollower() {
     let followers = userInfo.followers;
     if (isFollowing === false) {
@@ -34,10 +41,6 @@ const Author = () => {
       setIsFollowing(false);
     }
   }
-
-  useEffect(() => {
-    renderUserData();
-  }, []);
 
   return (
     <div id="wrapper">

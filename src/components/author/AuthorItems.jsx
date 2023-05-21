@@ -16,7 +16,7 @@ const AuthorItems = () => {
   async function fetchUserInfo() {
     try {
       const response = await axios.get(`${AuthorItems__API}${authorId}`);
-      // Seperated the nft data from the user and shortened names
+      // Separated the nft data from the user and shortened names
       const apiUserData = {
         authorName: response.data.authorName,
         address: response.data.address,

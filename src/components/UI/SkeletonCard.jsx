@@ -1,7 +1,7 @@
 import React from "react";
 import Skeleton from "./Skeleton";
 
-function SkeletonCard({ index }) {
+function SkeletonCard() {
   return (
     <>
       <div className="nft__item">
