@@ -38,6 +38,10 @@ const AuthorItems = () => {
     fetchUserInfo();
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="de_tab_content">
       <div className="tab-1">
@@ -90,7 +94,7 @@ const AuthorItems = () => {
                           </div>
                         </div>
                       </div>
-                      <Link to="/item-details">
+                      <Link to={`/item-details/${nft.nftId}`}>
                         <img
                           src={nft.nftImage}
                           className="lazy nft__item_preview"
