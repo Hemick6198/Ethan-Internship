@@ -16,25 +16,15 @@ const AuthorItems = () => {
 
   async function fetchUserInfo() {
     try {
-      const response = await axios.get(`${AuthorItems__API}${authorId}`);
-      // Separated the nft data from the user and shortened names
-      const apiUserData = {
-        authorName: response.data.authorName,
-        address: response.data.address,
-        authorImage: response.data.authorImage,
-        followers: response.data.followers,
-        id: response.data.id,
-        tag: response.data.tag,
-      };
+      const { data } = await axios.get(`${AuthorItems__API}${authorId}`);
       // Seperated the data objects
-      setUserInfo(apiUserData);
-      setNftInfo(response.data.nftCollection);
+      setUserInfo(data);
+      setNftInfo(data.nftCollection);
     } catch (error) {
       console.error("Failed to Fetch Data", error);
     }
     setIsLoading(false);
   }
-
   useEffect(() => {
     fetchUserInfo();
   }, []);
@@ -65,7 +55,6 @@ const AuthorItems = () => {
                 <div
                   className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
                   key={index}
-                  data-aos="fade-up"
                 >
                   <div className="nft__item">
                     <div className="author_list_pp">

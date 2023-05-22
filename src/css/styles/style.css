@@ -14268,11 +14268,12 @@ a.read_more i {
 .profile_follower {
   margin-right: 20px;
   font-weight: 600;
+  margin-bottom: 10px
 }
 
 .rtl .profile_follower {
   margin-right: 0;
-  margin-left: 20px;
+  margin-left: 24px;
 }
 
 .dark-scheme .profile_follower {

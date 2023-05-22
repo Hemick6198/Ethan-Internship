@@ -15,8 +15,8 @@ const ItemDetails = () => {
 
   async function nftItemDetailsData() {
     try {
-      const response = await axios.get(`${ItemDetails__API}${nftId}`);
-      setNftInfo(response.data);
+      const { data } = await axios.get(`${ItemDetails__API}${nftId}`);
+      setNftInfo(data);
     } catch (error) {
       console.error("Failed to Fetch Data", error);
     }

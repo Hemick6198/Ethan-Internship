@@ -18,14 +18,14 @@ const Author = () => {
 
   async function renderUserData() {
     try {
-      const response = await axios.get(`${Author__API}${authorId}`);
-      setUserInfo(response.data);
+      const { data } = await axios.get(`${Author__API}${authorId}`);
+      setUserInfo(data);
     } catch (error) {
       console.error("Failed to Fetch Data", error);
     }
     setIsLoading(false);
   }
-
+  
   useEffect(() => {
     renderUserData();
   }, []);
@@ -47,8 +47,6 @@ const Author = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // FROM MAIN DONT REMOVE!
-
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
@@ -65,76 +63,8 @@ const Author = () => {
         <section aria-label="section">
           <div className="container">
             <div className="row">
-              {!isLoading && (
-                <div key={userInfo.id}>
-                  <div className="col-md-12">
-                    <div className="d_profile de-flex">
-                      <div className="de-flex-col">
-                        <div className="profile_avatar">
-                          <img
-                            src={userInfo.authorImage}
-                            alt=""
-                            data-aos="fade-left"
-                          />
-                          <i className="fa fa-check" data-aos="fade-left"></i>
-                          <div className="profile_name" data-aos="fade-up">
-                            <h4>
-                              <p data-aos="fade-up" data-aos-delay="150">
-                                {userInfo.authorName}
-                              </p>
-                              <p
-                                className="profile_username"
-                                data-aos="fade-up"
-                                data-aos-delay="250"
-                              >
-                                @{userInfo.tag}
-                              </p>
-                              <p
-                                id="wallet"
-                                className="profile_wallet"
-                                data-aos="fade-up"
-                                data-aos-delay="350"
-                              >
-                                {userInfo.address}
-                              </p>
-                              <button
-                                id="btn_copy"
-                                title="Copy Text"
-                                data-aos="fade-up"
-                                data-aos-delay="350"
-                              >
-                                Copy
-                              </button>
-                            </h4>
-                          </div>
-                        </div>
-                      </div>
-                      <div className="profile_follow de-flex">
-                        <div className="de-flex-col">
-                          <div
-                            className="profile_follower"
-                            data-aos="fade-right"
-                            data-aos-delay="250"
-                          >
-                            {userInfo.followers} followers
-                          </div>
-                          <Link
-                            to="#"
-                            onClick={addFollower}
-                            className="btn-main"
-                            data-aos="fade-right"
-                          >
-                            {isFollowing ? "Unfollow" : "Follow"}
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {isLoading && (
-                <div key={userInfo.id}>
+              {isLoading ? (
+                <div>
                   <div className="col-md-12">
                     <div className="d_profile de-flex">
                       <div className="de-flex-col">
@@ -163,6 +93,62 @@ const Author = () => {
                             <Skeleton width={100} height={24} />
                           </div>
                           <Skeleton width={125} height={35} />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <div>
+                  <div className="col-md-12">
+                    <div className="d_profile de-flex">
+                      <div className="de-flex-col">
+                        <div className="profile_avatar">
+                          <img
+                            src={userInfo.authorImage}
+                            alt=""
+                          />
+                          <i className="fa fa-check"></i>
+                          <div className="profile_name">
+                            <h4>
+                              <p >
+                                {userInfo.authorName}
+                              </p>
+                              <p
+                                className="profile_username"
+                              >
+                                @{userInfo.tag}
+                              </p>
+                              <p
+                                id="wallet"
+                                className="profile_wallet"
+                              >
+                                {userInfo.address}
+                              </p>
+                              <button
+                                id="btn_copy"
+                                title="Copy Text"
+                              >
+                                Copy
+                              </button>
+                            </h4>
+                          </div>
+                        </div>
+                      </div>
+                      <div className="profile_follow de-flex">
+                        <div className="de-flex-col">
+                          <div
+                            className="profile_follower"
+                          >
+                            {userInfo.followers} followers
+                          </div>
+                          <Link
+                            to="#"
+                            onClick={addFollower}
+                            className="btn-main"
+                          >
+                            {isFollowing ? "Unfollow" : "Follow"}
+                          </Link>
                         </div>
                       </div>
                     </div>
