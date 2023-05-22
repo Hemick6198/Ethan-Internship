@@ -46,6 +46,8 @@ const Author = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // FROM MAIN DONT REMOVE!
+
   return (
     <div id="wrapper">
       <div className="no-bottom no-top" id="content">
