@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import SkeletonCard from "../UI/SkeletonCard";
+import "aos/dist/aos.css";
 
 const AuthorItems__API = `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=`;
 
@@ -64,6 +65,7 @@ const AuthorItems = () => {
                 <div
                   className="col-lg-3 col-md-6 col-sm-6 col-xs-12"
                   key={index}
+                  data-aos="fade-up"
                 >
                   <div className="nft__item">
                     <div className="author_list_pp">

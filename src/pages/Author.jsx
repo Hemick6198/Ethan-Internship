@@ -4,6 +4,7 @@ import AuthorItems from "../components/author/AuthorItems";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../components/UI/Skeleton";
+import "aos/dist/aos.css";
 
 const Author__API = `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=`;
 
@@ -70,18 +71,38 @@ const Author = () => {
                     <div className="d_profile de-flex">
                       <div className="de-flex-col">
                         <div className="profile_avatar">
-                          <img src={userInfo.authorImage} alt="" />
-                          <i className="fa fa-check"></i>
-                          <div className="profile_name">
+                          <img
+                            src={userInfo.authorImage}
+                            alt=""
+                            data-aos="fade-left"
+                          />
+                          <i className="fa fa-check" data-aos="fade-left"></i>
+                          <div className="profile_name" data-aos="fade-up">
                             <h4>
-                              {userInfo.authorName}
-                              <span className="profile_username">
+                              <p data-aos="fade-up" data-aos-delay="150">
+                                {userInfo.authorName}
+                              </p>
+                              <p
+                                className="profile_username"
+                                data-aos="fade-up"
+                                data-aos-delay="250"
+                              >
                                 @{userInfo.tag}
-                              </span>
-                              <span id="wallet" className="profile_wallet">
+                              </p>
+                              <p
+                                id="wallet"
+                                className="profile_wallet"
+                                data-aos="fade-up"
+                                data-aos-delay="350"
+                              >
                                 {userInfo.address}
-                              </span>
-                              <button id="btn_copy" title="Copy Text">
+                              </p>
+                              <button
+                                id="btn_copy"
+                                title="Copy Text"
+                                data-aos="fade-up"
+                                data-aos-delay="350"
+                              >
                                 Copy
                               </button>
                             </h4>
@@ -90,13 +111,18 @@ const Author = () => {
                       </div>
                       <div className="profile_follow de-flex">
                         <div className="de-flex-col">
-                          <div className="profile_follower">
+                          <div
+                            className="profile_follower"
+                            data-aos="fade-right"
+                            data-aos-delay="250"
+                          >
                             {userInfo.followers} followers
                           </div>
                           <Link
                             to="#"
                             onClick={addFollower}
                             className="btn-main"
+                            data-aos="fade-right"
                           >
                             {isFollowing ? "Unfollow" : "Follow"}
                           </Link>

@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Skeleton from "../UI/Skeleton";
 import NftCard from "../UI/NftCard";
 import SkeletonCard from "../UI/SkeletonCard";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ExploreNFT__API = `https://us-central1-nft-cloud-functions.cloudfunctions.net/explore`;
 
@@ -75,6 +76,16 @@ const ExploreItems = () => {
     }
   };
 
+  // Animations
+  AOS.init({
+    offset: 25,
+    easing: "ease",
+    duration: 750,
+    mirror: false,
+    delay: 0,
+    once: true,
+  });
+
   return (
     <>
       <div>
@@ -102,6 +113,7 @@ const ExploreItems = () => {
               key={index}
               className="d-item col-lg-3 col-md-6 col-sm-6 col-xs-12"
               style={{ display: "block", backgroundSize: "cover" }}
+              data-aos="fade-up"
             >
               <NftCard nft={nft} />
             </div>
