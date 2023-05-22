@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "../../css/styles/style.css";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
+import "aos/dist/aos.css";
 
 const HotCollectionsAPI__URL = `https://us-central1-nft-cloud-functions.cloudfunctions.net/hotCollections`;
 
@@ -94,7 +95,11 @@ const HotCollections = () => {
   };
 
   return (
-    <section id="section-collections" className="no-bottom">
+    <section
+      id="section-collections"
+      className="no-bottom"
+      data-aos="zoom-in-up"
+    >
       <div className="container">
         <div className="row">
           <div className="col-lg-12">

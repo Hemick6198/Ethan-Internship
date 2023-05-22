@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../UI/Skeleton";
 
+import "aos/dist/aos.css";
+
 const topSellersAPI = `https://us-central1-nft-cloud-functions.cloudfunctions.net/topSellers`;
 
 const TopSellers = () => {
@@ -36,7 +38,12 @@ const TopSellers = () => {
               <div className="small-border bg-color-2"></div>
             </div>
           </div>
-          <div className="col-md-12">
+          <div
+            className="col-md-12"
+            data-aos="flip-up"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="750"
+          >
             <ol className="author_list">
               {isLoading && (
                 <>

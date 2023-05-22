@@ -2829,6 +2829,7 @@ address span strong {
 
 .icon-box {
   display: block;
+  text-decoration: none;
   text-align: center;
   border: solid 1px #dddddd;
   padding: 20px 0 20px 0;

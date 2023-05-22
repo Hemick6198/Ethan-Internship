@@ -7,7 +7,7 @@ import "slick-carousel/slick/slick-theme.css";
 import "../../css/styles/style.css";
 import Skeleton from "../UI/Skeleton";
 import NftCard from "../UI/NftCard";
-import SkeletonCard from "../UI/SkeletonCard";
+import "aos/dist/aos.css";
 
 const NewItemsAPI__URL = `https://us-central1-nft-cloud-functions.cloudfunctions.net/newItems`;
 
@@ -97,7 +97,7 @@ const NewItems = () => {
   };
 
   return (
-    <section id="section-items" className="no-bottom">
+    <section id="section-items" className="no-bottom" data-aos="zoom-in-down">
       <div className="container">
         <div className="row">
           <div className="col-lg-12">

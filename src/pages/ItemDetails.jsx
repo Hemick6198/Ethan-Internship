@@ -3,6 +3,8 @@ import EthImage from "../images/ethereum.svg";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../components/UI/Skeleton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ItemDetails__API = `https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=`;
 
@@ -28,6 +30,16 @@ const ItemDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  // Animations
+  AOS.init({
+    offset: 25,
+    easing: "ease",
+    duration: 500,
+    mirror: false,
+    delay: 250,
+    once: true,
+  });
 
   return (
     <div id="wrapper">
@@ -105,7 +117,7 @@ const ItemDetails = () => {
 
               {!isLoading && (
                 <>
-                  <div className="col-md-6 text-center">
+                  <div className="col-md-6 text-center" data-aos="fade-left">
                     <img
                       src={nftInfo.nftImage}
                       className="img-fluid img-rounded mb-sm-30 nft-image"
@@ -114,28 +126,28 @@ const ItemDetails = () => {
                   </div>
                   <div className="col-md-6">
                     <div className="item_info">
-                      <h2>Rainbow Style #{nftInfo.tag}</h2>
+                      <h2 data-aos="fade-right">Rainbow Style #{nftInfo.tag}</h2>
 
                       <div className="item_info_counts">
-                        <div className="item_info_views">
-                          <i className="fa fa-eye"></i>
+                        <div className="item_info_views" data-aos="fade-right">
+                          <i className="fa fa-eye" ></i>
                           {nftInfo.views}
                         </div>
-                        <div className="item_info_like">
+                        <div className="item_info_like" data-aos="fade-right">
                           <i className="fa fa-heart"></i>
                           {nftInfo.likes}
                         </div>
                       </div>
-                      <p>
+                      <p data-aos="fade-right">
                         doloremque laudantium, totam rem aperiam, eaque ipsa
                         quae ab illo inventore veritatis et quasi architecto
                         beatae vitae dicta sunt explicabo.
                       </p>
                       <div className="d-flex flex-row">
                         <div className="mr40">
-                          <h6>Owner</h6>
+                          <h6 data-aos="fade-right">Owner</h6>
                           <div className="item_author">
-                            <div className="author_list_pp">
+                            <div className="author_list_pp" data-aos="fade-right">
                               <Link to={`/author/${nftInfo.ownerId}`}>
                                 <img
                                   className="lazy"
@@ -145,7 +157,7 @@ const ItemDetails = () => {
                                 <i className="fa fa-check"></i>
                               </Link>
                             </div>
-                            <div className="author_list_info">
+                            <div className="author_list_info" data-aos="fade-right">
                               <Link to={`/author/${nftInfo.ownerId}`}>
                                 {nftInfo.ownerName}
                               </Link>
@@ -156,9 +168,9 @@ const ItemDetails = () => {
                       </div>
                       <div className="de_tab tab_simple">
                         <div className="de_tab_content">
-                          <h6>Creator</h6>
+                          <h6 data-aos="fade-right">Creator</h6>
                           <div className="item_author">
-                            <div className="author_list_pp">
+                            <div className="author_list_pp" data-aos="fade-right">
                               <Link to={`/author/${nftInfo.creatorId}`}>
                                 <img
                                   className="lazy"
@@ -168,7 +180,7 @@ const ItemDetails = () => {
                                 <i className="fa fa-check"></i>
                               </Link>
                             </div>
-                            <div className="author_list_info">
+                            <div className="author_list_info" data-aos="fade-right">
                               <Link to={`/author/${nftInfo.creatorId}`}>
                                 {nftInfo.creatorName}
                               </Link>
@@ -176,8 +188,8 @@ const ItemDetails = () => {
                           </div>
                         </div>
                         <div className="spacer-40"></div>
-                        <h6>Price</h6>
-                        <div className="nft-item-price">
+                        <h6 data-aos="fade-right">Price</h6>
+                        <div className="nft-item-price" data-aos="fade-right">
                           <img src={EthImage} alt="" />
                           <span>{nftInfo.price}</span>
                         </div>
