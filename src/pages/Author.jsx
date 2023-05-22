@@ -4,7 +4,6 @@ import AuthorItems from "../components/author/AuthorItems";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../components/UI/Skeleton";
-import AOS from "aos";
 import "aos/dist/aos.css";
 
 const Author__API = `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=`;

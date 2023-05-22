@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import SkeletonCard from "../UI/SkeletonCard";
 import "aos/dist/aos.css";
-import AOS from "aos";
 
 const AuthorItems__API = `https://us-central1-nft-cloud-functions.cloudfunctions.net/authors?author=`;
 
