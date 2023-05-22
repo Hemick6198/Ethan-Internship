@@ -48,17 +48,7 @@ const Author = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  // comment test
-
-  // Animations
-  AOS.init({
-    offset: 25,
-    easing: "ease",
-    duration: 750,
-    mirror: false,
-    delay: 0,
-    once: true,
-  });
+  // FROM MAIN DONT REMOVE!
 
   return (
     <div id="wrapper">
