@@ -5,8 +5,20 @@ import Author from "./pages/Author";
 import ItemDetails from "./pages/ItemDetails";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function App() {
+  // Animations
+  AOS.init({
+    offset: 25,
+    easing: "ease",
+    duration: 750,
+    mirror: false,
+    delay: 0,
+    once: true,
+  });
+
   return (
     <Router>
       <Nav />

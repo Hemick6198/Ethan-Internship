@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NftCard from "../UI/NftCard";
 import SkeletonCard from "../UI/SkeletonCard";
-import AOS from "aos";
 import "aos/dist/aos.css";
 
 const ExploreNFT__API = `https://us-central1-nft-cloud-functions.cloudfunctions.net/explore`;
@@ -75,16 +74,6 @@ const ExploreItems = () => {
       setHasMoreData(false);
     }
   };
-
-  // Animations
-  AOS.init({
-    offset: 25,
-    easing: "ease",
-    duration: 750,
-    mirror: false,
-    delay: 0,
-    once: true,
-  });
 
   return (
     <>
