@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Countdown from "./Countdown";
 
-function NftCard({ nft }) {
+function NftCard({ nft, user }) {
   return (
     <div className="nft__item">
       <div className="author_list_pp">
@@ -13,15 +13,23 @@ function NftCard({ nft }) {
           data-bs-placement="top"
           title="Creator: Monica Lucas"
         >
-          <img className="lazy" src={nft.authorImage} alt="" />
+          <img
+            className="lazy"
+            src={nft.authorImage || user.authorImage}
+            alt=""
+          />
           <i className="fa fa-check"></i>
         </Link>
       </div>
-      <Countdown nft={nft} />
-      {nft.displayTimer && (
-        <div className="de_countdown">
-          {`${nft.hoursLeft}h ${nft.minutesLeft}m ${nft.secondsLeft}s`}
-        </div>
+      {nft.expiryDate && (
+        <>
+          <Countdown nft={nft} />
+          {nft.displayTimer && (
+            <div className="de_countdown">
+              {`${nft.hoursLeft}h ${nft.minutesLeft}m ${nft.secondsLeft}s`}
+            </div>
+          )}
+        </>
       )}
       <div className="nft__item_wrap">
         <div className="nft__item_extra">

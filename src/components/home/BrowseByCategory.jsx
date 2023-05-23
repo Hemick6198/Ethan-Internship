@@ -20,31 +20,31 @@ const BrowseByCategory = () => {
               <span>Art</span>
             </Link>
           </div>
-          <div className="col-md-2 col-sm-4 col-6 mb-sm-30" data-aos="fade-right" data-aos-delay="250">
+          <div className="col-md-2 col-sm-4 col-6 mb-sm-30" data-aos="fade-right" data-aos-delay="100">
             <Link to="/explore" className="icon-box style-2 rounded">
               <i className="fa fa-music"></i>
               <span>Music</span>
             </Link>
           </div>
-          <div className="col-md-2 col-sm-4 col-6 mb-sm-30" data-aos="fade-right" data-aos-delay="500">
+          <div className="col-md-2 col-sm-4 col-6 mb-sm-30" data-aos="fade-right" data-aos-delay="200">
             <Link to="/explore" className="icon-box style-2 rounded">
               <i className="fa fa-search"></i>
               <span>Domain Names</span>
             </Link>
           </div>
-          <div className="col-md-2 col-sm-4 col-6 mb-sm-30" data-aos="fade-right" data-aos-delay="750">
+          <div className="col-md-2 col-sm-4 col-6 mb-sm-30" data-aos="fade-right" data-aos-delay="300">
             <Link to="/explore" className="icon-box style-2 rounded">
               <i className="fa fa-globe"></i>
               <span>Virtual Worlds</span>
             </Link>
           </div>
-          <div className="col-md-2 col-sm-4 col-6 mb-sm-30" data-aos="fade-right" data-aos-delay="1000">
+          <div className="col-md-2 col-sm-4 col-6 mb-sm-30" data-aos="fade-right" data-aos-delay="400">
             <Link to="/explore" className="icon-box style-2 rounded">
               <i className="fa fa-vcard"></i>
               <span>Trading Cards</span>
             </Link>
           </div>
-          <div className="col-md-2 col-sm-4 col-6 mb-sm-30" data-aos="fade-right" data-aos-delay="1250">
+          <div className="col-md-2 col-sm-4 col-6 mb-sm-30" data-aos="fade-right" data-aos-delay="500">
             <Link to="/explore" className="icon-box style-2 rounded">
               <i className="fa fa-th"></i>
               <span>Collectibles</span>

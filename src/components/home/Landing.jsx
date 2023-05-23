@@ -48,7 +48,7 @@ const Landing = () => {
                 className="btn-main lead"
                 to="/explore"
                 data-aos="fade-up"
-                data-aos-delay="1250"
+                data-aos-delay="1000"
               >
                 Explore
               </Link>

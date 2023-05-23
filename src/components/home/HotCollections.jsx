@@ -57,7 +57,7 @@ const HotCollections = () => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     infinite: true,
-    speed: 500,
+    speed: 100,
     slidesToScroll: 1,
     slidesToShow: 4,
     responsive: [
@@ -98,7 +98,7 @@ const HotCollections = () => {
     <section
       id="section-collections"
       className="no-bottom"
-      data-aos="zoom-in-up"
+      data-aos="zoom-in-down"
     >
       <div className="container">
         <div className="row">

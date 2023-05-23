@@ -59,7 +59,7 @@ const NewItems = () => {
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
     infinite: true,
-    speed: 250,
+    speed: 100,
     slidesToScroll: 1,
     slidesToShow: 4,
     responsive: [

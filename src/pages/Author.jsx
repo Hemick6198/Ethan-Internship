@@ -11,6 +11,7 @@ const Author__API = `https://us-central1-nft-cloud-functions.cloudfunctions.net/
 const Author = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
+  // const [nftInfo, setNftInfo] = useState({});
   // brought over the authorId to get data
   const { authorId } = useParams();
   // checking following status for follow button
@@ -20,12 +21,14 @@ const Author = () => {
     try {
       const { data } = await axios.get(`${Author__API}${authorId}`);
       setUserInfo(data);
+      // setNftInfo(data.nftCollection);
+      console.log(data);
     } catch (error) {
       console.error("Failed to Fetch Data", error);
     }
     setIsLoading(false);
   }
-  
+
   useEffect(() => {
     renderUserData();
   }, []);
@@ -104,31 +107,18 @@ const Author = () => {
                     <div className="d_profile de-flex">
                       <div className="de-flex-col">
                         <div className="profile_avatar">
-                          <img
-                            src={userInfo.authorImage}
-                            alt=""
-                          />
+                          <img src={userInfo.authorImage} alt="" />
                           <i className="fa fa-check"></i>
                           <div className="profile_name">
                             <h4>
-                              <p >
-                                {userInfo.authorName}
-                              </p>
-                              <p
-                                className="profile_username"
-                              >
+                              <p>{userInfo.authorName}</p>
+                              <p className="profile_username">
                                 @{userInfo.tag}
                               </p>
-                              <p
-                                id="wallet"
-                                className="profile_wallet"
-                              >
+                              <p id="wallet" className="profile_wallet">
                                 {userInfo.address}
                               </p>
-                              <button
-                                id="btn_copy"
-                                title="Copy Text"
-                              >
+                              <button id="btn_copy" title="Copy Text">
                                 Copy
                               </button>
                             </h4>
@@ -137,9 +127,7 @@ const Author = () => {
                       </div>
                       <div className="profile_follow de-flex">
                         <div className="de-flex-col">
-                          <div
-                            className="profile_follower"
-                          >
+                          <div className="profile_follower">
                             {userInfo.followers} followers
                           </div>
                           <Link
@@ -158,7 +146,7 @@ const Author = () => {
 
               <div className="col-md-12">
                 <div className="de_tab tab_simple">
-                  <AuthorItems />
+                  <AuthorItems user={userInfo} isLoading={isLoading} />
                 </div>
               </div>
             </div>
