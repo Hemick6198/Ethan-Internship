@@ -14,7 +14,7 @@ const HotCollections = () => {
   const [nftInfo, setNftInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const skeletonArray = Array(4).fill(null);
-  
+
   async function hotCollectionsData() {
     try {
       const response = await axios.get(`${HotCollectionsAPI__URL}`);

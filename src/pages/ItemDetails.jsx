@@ -115,11 +115,13 @@ const ItemDetails = () => {
                   </div>
                   <div className="col-md-6">
                     <div className="item_info">
-                      <h2 data-aos="fade-right">Rainbow Style #{nftInfo.tag}</h2>
+                      <h2 data-aos="fade-right">
+                        Rainbow Style #{nftInfo.tag}
+                      </h2>
 
                       <div className="item_info_counts">
                         <div className="item_info_views" data-aos="fade-right">
-                          <i className="fa fa-eye" ></i>
+                          <i className="fa fa-eye"></i>
                           {nftInfo.views}
                         </div>
                         <div className="item_info_like" data-aos="fade-right">
@@ -136,7 +138,10 @@ const ItemDetails = () => {
                         <div className="mr40">
                           <h6 data-aos="fade-right">Owner</h6>
                           <div className="item_author">
-                            <div className="author_list_pp" data-aos="fade-right">
+                            <div
+                              className="author_list_pp"
+                              data-aos="fade-right"
+                            >
                               <Link to={`/author/${nftInfo.ownerId}`}>
                                 <img
                                   className="lazy"
@@ -146,7 +151,10 @@ const ItemDetails = () => {
                                 <i className="fa fa-check"></i>
                               </Link>
                             </div>
-                            <div className="author_list_info" data-aos="fade-right">
+                            <div
+                              className="author_list_info"
+                              data-aos="fade-right"
+                            >
                               <Link to={`/author/${nftInfo.ownerId}`}>
                                 {nftInfo.ownerName}
                               </Link>
@@ -159,7 +167,10 @@ const ItemDetails = () => {
                         <div className="de_tab_content">
                           <h6 data-aos="fade-right">Creator</h6>
                           <div className="item_author">
-                            <div className="author_list_pp" data-aos="fade-right">
+                            <div
+                              className="author_list_pp"
+                              data-aos="fade-right"
+                            >
                               <Link to={`/author/${nftInfo.creatorId}`}>
                                 <img
                                   className="lazy"
@@ -169,7 +180,10 @@ const ItemDetails = () => {
                                 <i className="fa fa-check"></i>
                               </Link>
                             </div>
-                            <div className="author_list_info" data-aos="fade-right">
+                            <div
+                              className="author_list_info"
+                              data-aos="fade-right"
+                            >
                               <Link to={`/author/${nftInfo.creatorId}`}>
                                 {nftInfo.creatorName}
                               </Link>
