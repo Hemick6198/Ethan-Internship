@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 const Countdown = ({ nft }) => {
   const [updatedNft, setUpdatedNft] = useState(nft);
 
-  // Countdown timer for NFT's
   const updateTimer = () => {
     const millisLeft = new Date(updatedNft.expiryDate) - Date.now();
     const secondsLeft = Math.floor(millisLeft / 1000) % 60;
@@ -20,7 +19,6 @@ const Countdown = ({ nft }) => {
     }));
   };
 
-  // Start the timer when component mounts
   useEffect(() => {
     const interval = setInterval(updateTimer, 1000);
     return () => {

@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect } from "react";
 import SkeletonCard from "../UI/SkeletonCard";
 import "aos/dist/aos.css";

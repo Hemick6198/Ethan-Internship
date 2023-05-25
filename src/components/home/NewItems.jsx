@@ -14,10 +14,8 @@ const NewItemsAPI__URL = `https://us-central1-nft-cloud-functions.cloudfunctions
 const NewItems = () => {
   const [nftInfo, setNftInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // skeleton loading state array
   const skeletonArray = Array(4).fill(null);
 
-  // Loading state and fetching API data with error catcher
   async function newItemsData() {
     try {
       const response = await axios.get(`${NewItemsAPI__URL}`);
@@ -32,7 +30,6 @@ const NewItems = () => {
     newItemsData();
   }, []);
 
-  // Arrow styling for carousel
   function SamplePrevArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -53,7 +50,7 @@ const NewItems = () => {
       />
     );
   }
-  // styling for carousel
+
   const settings = {
     dots: false,
     nextArrow: <SampleNextArrow />,
@@ -107,9 +104,9 @@ const NewItems = () => {
             </div>
           </div>
 
+          {/* cant use SkeletonCard component for this loading state */}
           {isLoading && (
             <Slider {...settings}>
-              {/* cant use SkeletonCard component for this loading state */}
               {skeletonArray.map((_, index) => (
                 <div className="nft__item" key={index}>
                   <div className="author_list_pp">

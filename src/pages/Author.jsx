@@ -11,17 +11,13 @@ const Author__API = `https://us-central1-nft-cloud-functions.cloudfunctions.net/
 const Author = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [userInfo, setUserInfo] = useState({});
-  // const [nftInfo, setNftInfo] = useState({});
-  // brought over the authorId to get data
   const { authorId } = useParams();
-  // checking following status for follow button
   const [isFollowing, setIsFollowing] = useState(false);
 
   async function renderUserData() {
     try {
       const { data } = await axios.get(`${Author__API}${authorId}`);
       setUserInfo(data);
-      // setNftInfo(data.nftCollection);
       console.log(data);
     } catch (error) {
       console.error("Failed to Fetch Data", error);
@@ -33,7 +29,6 @@ const Author = () => {
     renderUserData();
   }, []);
 
-  // Follower button functionality
   function addFollower() {
     let followers = userInfo.followers;
     if (isFollowing === false) {

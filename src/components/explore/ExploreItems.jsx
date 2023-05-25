@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import NftCard from "../UI/NftCard";
@@ -10,20 +9,16 @@ const ExploreNFT__API = `https://us-central1-nft-cloud-functions.cloudfunctions.
 const ExploreItems = () => {
   const [nftInfo, setNftInfo] = useState([]);
   const [filter, setFilter] = useState("");
-  // updates the display count and how many to add to screen
   const [displayCount, setDisplayCount] = useState(8);
   const [hasMoreData, setHasMoreData] = useState(true);
   const incrementCount = 4;
-  // Skeleton Loading State
   const [isLoading, setIsLoading] = useState(true);
   const skeletonArray = Array(8).fill(null);
 
-  // Fetch the API Data and useState it.
   async function exploreNftData() {
     try {
       const response = await axios.get(`${ExploreNFT__API}`);
       setNftInfo(response.data);
-      // Checking if there is any more data that can be loaded
       if (response.data.length < displayCount + incrementCount) {
         setHasMoreData(false);
       }
@@ -37,7 +32,6 @@ const ExploreItems = () => {
     exploreNftData();
   }, []);
 
-  // Sorts the NFT's
   async function sortNft() {
     setIsLoading(true);
     try {

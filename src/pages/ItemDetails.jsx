@@ -3,7 +3,6 @@ import EthImage from "../images/ethereum.svg";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import Skeleton from "../components/UI/Skeleton";
-import AOS from "aos";
 import "aos/dist/aos.css";
 
 const ItemDetails__API = `https://us-central1-nft-cloud-functions.cloudfunctions.net/itemDetails?nftId=`;
@@ -30,16 +29,6 @@ const ItemDetails = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  // Animations
-  AOS.init({
-    offset: 25,
-    easing: "ease",
-    duration: 500,
-    mirror: false,
-    delay: 250,
-    once: true,
-  });
 
   return (
     <div id="wrapper">

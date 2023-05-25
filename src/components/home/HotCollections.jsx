@@ -14,8 +14,7 @@ const HotCollections = () => {
   const [nftInfo, setNftInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const skeletonArray = Array(4).fill(null);
-
-  // Loading state and fetching API data with error catcher
+  
   async function hotCollectionsData() {
     try {
       const response = await axios.get(`${HotCollectionsAPI__URL}`);
@@ -30,7 +29,6 @@ const HotCollections = () => {
     hotCollectionsData();
   }, []);
 
-  // Arrow styling for carousel
   function SamplePrevArrow(props) {
     const { className, style, onClick } = props;
     return (
@@ -51,7 +49,7 @@ const HotCollections = () => {
       />
     );
   }
-  // settings for carousel
+
   const settings = {
     dots: false,
     nextArrow: <SampleNextArrow />,

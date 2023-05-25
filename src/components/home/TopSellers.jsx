@@ -10,11 +10,9 @@ const topSellersAPI = `https://us-central1-nft-cloud-functions.cloudfunctions.ne
 const TopSellers = () => {
   const [nftInfo, setNftInfo] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  // Skeleton loading state array
   const skeletonArray = Array(12).fill(null);
 
   async function topSellersData() {
-    // Fetch API data with error and loading state
     try {
       const response = await axios.get(`${topSellersAPI}`);
       setNftInfo(response.data);
